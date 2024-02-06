@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор командных файлов</title>
+</head>
+<body>
+    <h1>Генератор командных файлов</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="spisok_file">Выберите темплейт:</label>
+        <input type="file" name="spisok_file" id="spisok_file" required><br><br>
+        <label for="serial_number">Серийный номер:</label>
+        <input type="text" name="serial_number" id="serial_number" required><br><br>
+        <label for="cell_name">Имя соты (cell_name):</label>
+        <input type="text" name="cell_name" id="cell_name" required><br><br>
+        <input type="submit" value="Подготовить файл">
+    </form>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор командных файлов</title>
+  <link rel="preload" as="font" type="font/woff2" crossorigin=""
+        href="//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin=""
+        href="//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Medium.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin=""
+        href="//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Medium.woff2">
+</head>
+<style>
+    @font-face {
+        font-family: "MTS Compact";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Regular.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Regular.ttf") format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Compact";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Medium.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Medium.ttf") format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Wide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Bold.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Bold.ttf") format('truetype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Wide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Medium.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Medium.ttf") format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Wide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Light.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Light.ttf") format('truetype');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Wide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Regular.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Regular.ttf") format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Wide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Black.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Black.ttf") format('truetype');
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Compact";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Bold.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Bold.ttf") format('truetype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Compact";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Black.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Black.ttf") format('truetype');
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Text";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSText/MTSText-Regular.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSText/MTSText-Regular.ttf") format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTS Text";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSText/MTSText-Medium.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSText/MTSText-Medium.ttf") format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSCompact";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Regular.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Regular.ttf") format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSCompact";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Medium.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Medium.ttf") format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSCompact";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Bold.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Bold.ttf") format('truetype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSCompact";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Black.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSCompact/MTSCompact-Black.ttf") format('truetype');
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSWide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Light.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Light.ttf") format('truetype');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSWide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Regular.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Regular.ttf") format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSWide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Medium.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Medium.ttf") format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSWide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Bold.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Bold.ttf") format('truetype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSWide";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Black.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSWide/MTSWide-Black.ttf") format('truetype');
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSText";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSText/MTSText-Regular.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSText/MTSText-Regular.ttf") format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "MTSText";
+        src: url("//static.mts.ru/mts_rf/images/fonts/v1/MTSText/MTSText-Medium.woff2") format('woff2'), url("//static.mts.ru/mts_rf/images/fonts/v1/MTSText/MTSText-Medium.ttf") format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    body {
+        background: #f2f3f7;
+        font-family: "MTSCompact", "Arial", sans-serif;
+    }
+
+    .decor {
+        position: relative;
+        max-width: 800px;
+        margin: 50px auto 0;
+        background: white;
+        border-radius: 30px;
+    }
+
+    .form-left-decoration, .form-right-decoration {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 20px;
+        background: #f2f3f7;;
+        border-radius: 20px;
+    }
+
+    .form-left-decoration {
+        bottom: 60px;
+        left: -30px;
+    }
+
+    .form-right-decoration {
+        top: 60px;
+        right: -30px;
+    }
+
+    .form-left-decoration:before, .form-left-decoration:after, .form-right-decoration:before, .form-right-decoration:after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 20px;
+        border-radius: 30px;
+        background: white;
+    }
+
+    .form-left-decoration:before {
+        top: -20px;
+    }
+
+    .form-left-decoration:after {
+        top: 20px;
+        left: 10px;
+    }
+
+    .form-right-decoration:before {
+        top: -20px;
+        right: 0;
+    }
+
+    .form-right-decoration:after {
+        top: 20px;
+        right: 10px;
+    }
+
+    .circle {
+        position: absolute;
+        bottom: 80px;
+        left: -55px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .form-inner {
+        padding: 50px;
+    }
+
+    .fr {
+        display:flex;
+        margin-top: 20px;
+    }
+
+    .inp {
+        /*display: flex;*/
+        padding: 0 20px;
+        line-height: 40px;
+        border-width: 1px;
+        border-radius: 12px;
+        font-family: 'MTSCompact', serif;
+        border-color: #969fa8;
+        width: 50%;
+        margin: 5px 5px;
+
+    }
+
+    .form-inner input[type="submit"] {
+        margin-top: 30px;
+        background: red;
+        cursor: pointer;
+        border: 0;
+        color: white;
+        font-size: 14px;
+        font-family: 'MTSCompact', serif;
+        min-height: 44px;
+        line-height: 17px;
+        font-weight: 500;
+        border-radius: 12px;
+        width: 100%;
+
+    }
+
+    .form-inner input::file-selector-button {
+        font-weight: bold;
+        padding: 0.5em;
+        border: thin solid grey;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .form-inner h2 {
+        margin-top: 0;
+        font-family: 'MTS Wide', serif;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: #3e3e3e;
+    }
+</style>
+<body>
+
+<form method="post" enctype="multipart/form-data" class="decor">
+
+  <div class="form-left-decoration"></div>
+  <div class="form-right-decoration"></div>
+  <div class="circle"></div>
+  <div class="form-inner">
+    <h2>Генератор командных файлов</h2>
+      {% csrf_token %}
+    <label for="spisok_file">Выберите темплейт:</label>
+    <input type="file" name="spisok_file" id="spisok_file" required placeholder="">
+    <div class="fr">
+      <input type="text" class="inp" name="serial_number" id="serial_number" required placeholder="Серийный номер:">
+      <input type="text" class="inp" name="cell_name" id="cell_name" required placeholder="Имя соты (cell_name):">
+    </div>
+    <input type="submit" value="Подготовить файл">
+  </div>
+</form>
+</body>
+</html>
